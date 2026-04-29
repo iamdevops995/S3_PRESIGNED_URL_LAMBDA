@@ -7,6 +7,12 @@ This project demonstrates a secure file upload architecture using:
 
 ## Architecture
 
+### Infrastructure Diagram:
+
+<p align="center">
+  <img src="./presigned-url-arch.png" alt="Architecture" width="700">
+</p>
+
 
 
 
@@ -63,6 +69,16 @@ Step 1:
 Step 2:
 
 `curl -X PUT -T test.txt "UPLOAD_URL"`
+
+#Bash
+
+```
+UPLOAD_URL=$(curl -s "https://API_URL/generate-url" | jq -r .uploadUrl)
+curl -X PUT -T test.txt "$UPLOAD_URL"
+
+```
+
+
 
 ## Notes
 - Do not modify pre-signed URL
